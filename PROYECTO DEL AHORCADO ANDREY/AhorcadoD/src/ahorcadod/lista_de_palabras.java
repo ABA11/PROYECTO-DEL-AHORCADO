@@ -9,47 +9,46 @@ package ahorcadod;
  *
  * @author Andrey B
  */
-public class lista_de_palabras {
-    private String palabras[];
+public class lista_de_palabras {     
+    //VARIABLES QUE SE UTILIZARAN DURANTE EL PROGRESO DEL PROGRAMA
+    String lpalabras[];//ESTA VARIABLE DE TIPO ARREGLO, TENDRA LAS PALABRAS ASIGNADAS POR EL PROGRAMADOR
 
-    public String[] getPalabras() {
-        return palabras;
-    }
+    //CONSTRUCTOR DE LA CLASE LISTA_DE_PALABRAS
 
-    public void setPalabras(String[] palabras) {
-        this.palabras = palabras;
+    public lista_de_palabras(String[] lpalabras) {
+        this.lpalabras = lpalabras;
+       
     }
-
-    public String getPalabraE() {
-        return palabraE;
-    }
-
-    public void setPalabraE(String palabraE) {
-        this.palabraE = palabraE;
-    }
-
-    public String[] getPalabraF() {
-        return palabraF;
-    }
-
-    public void setPalabraF(String[] palabraF) {
-        this.palabraF = palabraF;
-    }
-
-    public char getLetra() {
-        return letra;
-    }
-
-    public void setLetra(char letra) {
-        this.letra = letra;
-    }
-    private String palabraE;
-    private String palabraF[];
-    private char letra;
+    //SET`S & GET`S
     
-public String escogerpalabra(String palabra[]){
-       int aleatoria = (int) (Math.random()*4);
-               return palabra[aleatoria];
-               
+    /**
+     *MÉTODO GET PARA LA VARIABLE Lpalabras
+     * @return lpalabras
+     */
+    public String[] getLpalabras() {
+        return lpalabras;
+    }
+
+    /**
+     *MÉTODO SET PARA LA VARIABLE Lpalabras
+     * @param lpalabras
+     */
+    public void setLpalabras(String[] lpalabras) {
+        this.lpalabras = lpalabras;
+    }
+
+   
+    //METODOS ESPECIFICOS QUE LO QUE REALIZARAN SON LOS PROCEDIMIENTOS PARA QUE EL PROGRAMA SE EJEECUTE
+    
+    /**
+     *MÉTODO QUE ME ESCOGE UNA PALABRA AL AZAR
+     * @param lpalabras
+     * @return lpalabras[azar]
+     */
+    public String palabraAzar(String lpalabras[]){//MÉTODO QUE FUNCIONA PARA QUE EL PROGRAMA ELIGA UNA PALABRA DE LAS CUALES HEMOS INGRESADO EN EL MAIN
+       int azar = (int) (Math.random()*7);//DAMOS UN VALOR RANDOM A LA VARIABLE int azar 
+               return lpalabras[azar];//POR MEDIO DE LA VARIABLE azar NOS DA UNA POSICION ALEATORIO DE LA VARIABLE TIPO ARREGLO lpalbras
+    
    }
+    
 }

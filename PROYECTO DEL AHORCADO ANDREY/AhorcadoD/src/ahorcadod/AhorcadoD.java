@@ -16,7 +16,8 @@ public class AhorcadoD {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    
+        String lpalabras[] = {"Belice","Costa Rica","El Salvador","Guatemala","Honduras","Nicaragua","Panamá"};
+       lista_de_palabras lp = new lista_de_palabras(lpalabras);
+        System.out.println(lp.palabraAzar(lpalabras));//PRUEBA PARA A VER SI SIRVE EL METODO RANDOM
     }
-    
 }
