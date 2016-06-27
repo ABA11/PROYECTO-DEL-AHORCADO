@@ -19,19 +19,20 @@ public class Ahorcado{
         String aux = "";
         char caracter = 0;
         int contador = 10;
-        int x = 0;
+        boolean x = true;
         int aciertos = 0;
         int menu1;
         int menu2;
         //MENÚ NUMERO 1, ESTE ES PARA ELEGIR SI QUIERE JUGAR O SALIR DEL JUEGO
-        menu1 = Integer.parseInt(JOptionPane.showInputDialog("Elija su opción\n1. Jugar \n2. Salir del Juego" ));
+        menu1 = Integer.parseInt(JOptionPane.showInputDialog("Elija su opción,solo ingrese numeros\n1. Jugar \n2. Salir del Juego" ));
         switch(menu1){
             case 1:{
-                  //ESTE MENÚ FUNCIONA PARA ELEGIR LA CATEGORIA QUE EL USUARIO DESEA JUGAR     
-        menu2 = Integer.parseInt(JOptionPane.showInputDialog("Menú de categorias\n1. colores\n2. paises \n3. frutas" ));
+                  //ESTE MENÚ FUNCIONA PARA ELEGIR LA CATEGORIA QUE EL USUARIO DESEA JUGAR 
+        while(x == true){         
+        menu2 = Integer.parseInt(JOptionPane.showInputDialog("Menú de categorias,solo ingrese numeros\n1. colores\n2. paises \n3. frutas" ));
         switch(menu2){
             case 1:{//LA OPCIÓN N.1 ES LA DE COLORES 
-        String lpalabras[] = {"blanco","negro","azul","rojo"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 1
+        String [] lpalabras= {"blanco","negro","azul","rojo"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 1
         lista_de_palabras pl = new lista_de_palabras(lpalabras,palabraal,palabraac,caracter);
         palabraal = pl.palabraAzar(lpalabras);
         palabraac = new String[palabraal.length()];
@@ -42,7 +43,7 @@ public class Ahorcado{
         System.out.println(pl.compararPalabra(caracter, palabraal, palabraac));
         //CICLO PARA VALIDAR SI LAS LETRAS INGRESADAS SON LAS MISMAS QUE LA PALABRA A ADIVINAR
         while(contador>1){
-            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
+            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra, solo letras y de una en una</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
             caracter = aux.charAt(0);//EL JOPTIONPANE GUARDA EL CARACTER COMO STRING ENTONCES AQUI SE CONVIERTE EN CARACTER
             int contadorn = 0;//VARIABLE QUE FUNCIONA SOLO EN ESTE CICLO
             //CILCO QUE COMPRUEBA SI LA LETRA ESTA EN LA PALABRA A ADIVINAR ENTONCE EL LO SUSTITUIRA EL SIMBOLO - POR EL CARACTER QUE VA EN LA PALABRA
@@ -62,13 +63,17 @@ public class Ahorcado{
         }
          if(aciertos==palabraal.length()){//AQUI INDICA QUE SI TODOS LOS CARACTERES PUESTOS SON IGUALES QUE LA PALBRA A ADIVINAR IMPRIMA QUE GANO O PERDIO
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
+             contador = 10;
+             pl.espaciosPalabra(palabraac);
          }else
-             JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
+             JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido intentalo nuevamente!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
+             contador = 10;
+             pl.espaciosPalabra(palabraac);
        
             }break;//ACA TERMINA EL CICLO Y CASO 1 DEL MENU1
                 
         case 2:{//LA OPCIÓN N.2 ES LA DE LOS PAISES 
-        String ñpalabras[] = {"alemania","polonia","portugal","brasil"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 2
+        String [] ñpalabras = {"alemania","polonia","portugal","brasil"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 2
         lista_de_palabras ll = new lista_de_palabras(ñpalabras,palabraal,palabraac,caracter);
         palabraal = ll.palabraAzar(ñpalabras);
         palabraac = new String[palabraal.length()];
@@ -81,7 +86,7 @@ public class Ahorcado{
        
         //CICLO PARA VALIDAR SI LAS LETRAS INGRESADAS SON LAS MISMAS QUE LA PALABRA A ADIVINAR   
         while(contador>1){
-            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
+            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra, solo letras y de una en una</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
             caracter = aux.charAt(0);//EL JOPTIONPANE GUARDA EL CARACTER COMO STRING ENTONCES AQUI SE CONVIERTE EN CARACTER
             int contadorn = 0;//VARIABLE QUE FUNCIONA SOLO EN ESTE CICLO
             //CILCO QUE COMPRUEBA SI LA LETRA ESTA EN LA PALABRA A ADIVINAR ENTONCE EL LO SUSTITUIRA EL SIMBOLO - POR EL CARACTER QUE VA EN LA PALABRA
@@ -101,13 +106,16 @@ public class Ahorcado{
         }
          if(aciertos==palabraal.length()){//AQUI INDICA QUE SI TODOS LOS CARACTERES PUESTOS SON IGUALES QUE LA PALBRA A ADIVINAR IMPRIMA QUE GANO O PERDIO
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
+             contador = 10;
+             ll.espaciosPalabra(palabraac);
          }else
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
-    
+             contador = 10;
+             ll.espaciosPalabra(palabraac);
         }break;//ACA TERMINA EL CICLO Y CASO 2 DEL MENU2
 
     case 3:{//LA OPCIÓN N.3 ES LA DE LAS FRUTAS 
-        String kpalabras[] = {"uva","sandia","fresa","mango"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 3
+        String [] kpalabras = {"uva","sandia","fresa","mango"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 3
         lista_de_palabras lo = new lista_de_palabras(kpalabras,palabraal,palabraac,caracter);
         palabraal = lo.palabraAzar(kpalabras);
         palabraac = new String[palabraal.length()];
@@ -118,7 +126,7 @@ public class Ahorcado{
         System.out.println(lo.compararPalabra(caracter, palabraal, palabraac));
         //CICLO PARA VALIDAR SI LAS LETRAS INGRESADAS SON LAS MISMAS QUE LA PALABRA A ADIVINAR
         while(contador>1){
-            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
+            aux = JOptionPane.showInputDialog(null,"<html><font size = 20>" + "<html><font color = green>Ingrese la letra, solo letras y de una en una</font></font></html></html>");//ESTA LÍNEA FUNCIONA PARA QUE EL USUARIO INGRESE LA LETRA Y SI ES VERDADERA SE COLOCARA EN EL ESPACIO, DE LO CONTRARIO LA MISMA SERVIRA PARA INGRESAR NUEVAMENTE OTRA LETRA,ESTA FUNCIONARA HASTA QUE GANE O PIERDA 
             caracter = aux.charAt(0);//EL JOPTIONPANE GUARDA EL CARACTER COMO STRING ENTONCES AQUI SE CONVIERTE EN CARACTER
             int contadorn = 0;//VARIABLE QUE FUNCIONA SOLO EN ESTE CICLO
             //CILCO QUE COMPRUEBA SI LA LETRA ESTA EN LA PALABRA A ADIVINAR ENTONCE EL LO SUSTITUIRA EL SIMBOLO - POR EL CARACTER QUE VA EN LA PALABRA
@@ -138,20 +146,30 @@ public class Ahorcado{
         }
          if(aciertos==palabraal.length()){//AQUI INDICA QUE SI TODOS LOS CARACTERES PUESTOS SON IGUALES QUE LA PALBRA A ADIVINAR IMPRIMA QUE GANO O PERDIO
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
+             contador = 10;
+             lo.espaciosPalabra(palabraac);
          }else
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
+             contador = 10;
+             lo.espaciosPalabra(palabraac);
     }break;//ACA TERMINA EL CICLO Y CASO 3 DEL MENÚ2
         
     
     
         }
-     } 
+        int reiniciar = JOptionPane.showConfirmDialog(null,"Deseas jugar nuevamente");
+             if(reiniciar==JOptionPane.YES_OPTION){
+                 x = true;
+             }else
+                 x = false;
+     }
+            }
       case 2:{
              JOptionPane.showMessageDialog(null,"Has terminado el juego");
                 }break;      
-    }
+    
             }
             
-
+    }
     
     }
