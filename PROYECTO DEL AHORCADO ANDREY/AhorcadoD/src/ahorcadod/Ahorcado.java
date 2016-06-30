@@ -29,7 +29,9 @@ public class Ahorcado{
         switch(menu1){//INICIALIZACION DEL MENU NUMERO 1
             case 1:{
         //ESTE MENÚ FUNCIONA PARA ELEGIR LA CATEGORIA QUE EL USUARIO DESEA JUGAR 
-        while(x == true){//INICIALIZACION DEL CICLO PARA EJECUTAR LA OPCION DE REINICIAR O NO EL JUEGO         
+        while(x == true){//INICIALIZACION DEL CICLO PARA EJECUTAR LA OPCION DE REINICIAR O NO EL JUEGO
+        contador = 10;
+        aciertos =0;    
         menu2 = Integer.parseInt(JOptionPane.showInputDialog("Menú de categorias,solo ingrese numeros\n1. colores\n2. paises \n3. frutas" ));//ESTA LINEA PARA SELECCIONAR UNA CATEGORIA CON NUMEROS ENTEROS
         switch(menu2){
             case 1:{//LA OPCIÓN N.1 ES LA DE COLORES 
@@ -68,19 +70,20 @@ public class Ahorcado{
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
              contador = 10;
              pl.espaciosPalabra(palabraac);
+             aciertos = 0;
          }else
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido intentalo nuevamente!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
              contador = 10;
              pl.espaciosPalabra(palabraac);
-       
+             aciertos = 0;
             }break;//ACA TERMINA EL CICLO Y CASO 1 DEL MENU1
                 
         case 2:{//LA OPCIÓN N.2 ES LA DE LOS PAISES 
-        String [] ñpalabras = {"alemania","polonia","portugal","brasil"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 2
-        lista_de_palabras ll = new lista_de_palabras(ñpalabras,palabraal,palabraac,caracter);
-        palabraal = ll.palabraAzar(ñpalabras);
-        palabraac = new String[palabraal.length()];
-        ll.espaciosPalabra(palabraac);
+        String [] ñpalabras = {"japon","mexico","portugal","camerun"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 2
+        lista_de_palabras ll = new lista_de_palabras(ñpalabras,palabraal,palabraac,caracter);//ESTA ES UNA INSTANCIA DE LA CALSE LISTA_DE_PALABRAS PARA LLAMAR A SUS METODOS
+        palabraal = ll.palabraAzar(ñpalabras);//ESTA LINEA ES LA INICIALIZACION DE LA PALABRA ELEGIDA, POR MEDIO DE LA LLAMADA AL METODO PALABRA AZAR
+        palabraac = new String[palabraal.length()];//ESTA LINEA ES LA INICIALIZACION LOS ESPACIOS DE LA VARIABLE DE TIPO ARREGLO PALABRAAC
+        ll.espaciosPalabra(palabraac);//METODO PARA LLENAR LOS ESPACION YA RECONOCIDOS LLENANDOLOS CON EL SIMBOLO "-"
         
         //ESTE PASO SIRVE PARA IMPRIMIR LA LONGITUD DE LA PALABRA A ADIVINAR
         JOptionPane.showMessageDialog(null,"Longitud de la palabra a adivinar\n"+"<html><font size = 20>" + "<html><font color = red>" + ll.compararPalabra(caracter, palabraal, palabraac)+"\nOportunidades: "+contador);
@@ -114,18 +117,20 @@ public class Ahorcado{
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
              contador = 10;
              ll.espaciosPalabra(palabraac);
+             aciertos = 0;
          }else
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
              contador = 10;
              ll.espaciosPalabra(palabraac);
+             aciertos = 0;
         }break;//ACA TERMINA EL CICLO Y CASO 2 DEL MENU2
 
     case 3:{//LA OPCIÓN N.3 ES LA DE LAS FRUTAS 
-        String [] kpalabras = {"uva","sandia","fresa","mango"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 3
-        lista_de_palabras lo = new lista_de_palabras(kpalabras,palabraal,palabraac,caracter);
-        palabraal = lo.palabraAzar(kpalabras);
-        palabraac = new String[palabraal.length()];
-        lo.espaciosPalabra(palabraac);
+        String [] kpalabras = {"uva","kiwi","fresa","melon"};//LAS PALABRAS QUE ESTARAN EN EL CASO NUMERO 3
+        lista_de_palabras lo = new lista_de_palabras(kpalabras,palabraal,palabraac,caracter);//ESTA ES UNA INSTANCIA DE LA CALSE LISTA_DE_PALABRAS PARA LLAMAR A SUS METODOS
+        palabraal = lo.palabraAzar(kpalabras);//ESTA LINEA ES LA INICIALIZACION DE LA PALABRA ELEGIDA, POR MEDIO DE LA LLAMADA AL METODO PALABRA AZAR
+        palabraac = new String[palabraal.length()];//ESTA LINEA ES LA INICIALIZACION LOS ESPACIOS DE LA VARIABLE DE TIPO ARREGLO PALABRAAC
+        lo.espaciosPalabra(palabraac);//METODO PARA LLENAR LOS ESPACION YA RECONOCIDOS LLENANDOLOS CON EL SIMBOLO "-"
         
         //ESTE PASO SIRVE PARA IMPRIMIR LA LONGITUD DE LA PALABRA A ADIVINAR
         JOptionPane.showMessageDialog(null,"Longitud de la palabra a adivinar\n"+"<html><font size = 20>" + "<html><font color = red>" + lo.compararPalabra(caracter, palabraal, palabraac)+"\nOportunidades: "+contador);
@@ -158,10 +163,12 @@ public class Ahorcado{
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has ganado felicidades!</font></font></html></html>");//ESTA LINEA INFORMA SI GANAS
              contador = 10;
              lo.espaciosPalabra(palabraac);
+             aciertos = 0;
          }else
              JOptionPane.showMessageDialog(null,"<html><font size = 20>" + "<html><font color = blue> ¡Has perdido!</font></font></html></html>");//ESTA LINEA INFORMA SI PIERDES
              contador = 10;
              lo.espaciosPalabra(palabraac);
+             aciertos = 0;
     }break;//ACA TERMINA EL CICLO Y CASO 3 DEL MENÚ2
         
     
@@ -178,8 +185,7 @@ public class Ahorcado{
              JOptionPane.showMessageDialog(null,"Has terminado el juego");
                 }break;      
     
-            }
+        }
             
     }
-    
-    }
+}    
